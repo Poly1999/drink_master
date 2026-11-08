@@ -1,9 +1,5 @@
 function Home() {
-  return (
-    <div>
-      <main>Drink Master</main>
-    </div>
-  );
+  return <main>Drink Master</main>;
 }
 
 export default Home;

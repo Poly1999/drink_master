@@ -17,10 +17,12 @@ export const metadata: Metadata = {
   description: 'Cocktails App',
 };
 
-export default function RootLayout({ children }: LayoutProps<'/'>) {
+function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang='en' className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );
 }
+
+export default RootLayout;
