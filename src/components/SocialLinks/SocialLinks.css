@@ -1,0 +1,32 @@
+.social-links {
+  display: flex;
+  gap: 14px;
+}
+
+.social-links__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  border-radius: 10px;
+  transition: border-color var(--transition);
+}
+
+.social-links__link:hover,
+.social-links__link:focus-visible {
+  border-color: rgba(243, 243, 243, 0.5);
+}
+
+.social-links__icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 768px) {
+  .social-links__link {
+    width: 44px;
+    height: 44px;
+  }
+}
