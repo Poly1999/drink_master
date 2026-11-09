@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang='en' className={`${manrope.variable} `}>
+    <html lang='en' className={manrope.variable}>
       <body>
         <Header />
         {children}
