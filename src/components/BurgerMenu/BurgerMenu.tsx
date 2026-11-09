@@ -35,7 +35,10 @@ function BurgerMenu() {
       {isOpen && (
         <div className='burger-menu'>
           <div className='burger-menu__top'>
-            <Logo />
+            <div onClick={closeMenu}>
+              <Logo />
+            </div>
+
             <div className='burger-menu__controls'>
               <ThemeToggler />
               <button
@@ -54,7 +57,7 @@ function BurgerMenu() {
               </button>
             </div>
           </div>
-          <div className='burger-menu__body'>
+          <div className='burger-menu__body' onClick={closeMenu}>
             <Navigation />
             <div className='burger-menu__guest'>
               <p className='burger-menu__text'>
