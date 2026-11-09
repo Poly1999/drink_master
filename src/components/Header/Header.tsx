@@ -1,3 +1,4 @@
+import BurgerMenu from '@/components/BurgerMenu/BurgerMenu';
 import './Header.css';
 import Logo from '@/components/Logo/Logo';
 import Navigation from '@/components/Navigation/Navigation';
@@ -15,6 +16,7 @@ function Header() {
         <Link href='/welcome' className='header__btn'>
           Sign in
         </Link>
+        <BurgerMenu />
       </div>
     </header>
   );
