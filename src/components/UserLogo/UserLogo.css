@@ -1,0 +1,28 @@
+.user-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-logo__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-logo__name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .user-logo__avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .user-logo__name {
+    font-size: 16px;
+  }
+}

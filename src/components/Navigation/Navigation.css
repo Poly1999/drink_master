@@ -1,0 +1,30 @@
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav__link {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  border: 1px solid var(--color-border);
+  border-radius: 40px;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  border-color: var(--color-border-hover);
+}
+
+.nav__link--active {
+  background-color: var(--color-active-bg);
+  border-color: var(--color-active-bg);
+  color: var(--color-active-text);
+}
