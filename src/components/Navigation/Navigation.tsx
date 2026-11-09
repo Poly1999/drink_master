@@ -1,3 +1,4 @@
+import './Navigation.css';
 import Link from 'next/link';
 
 const navigation = [

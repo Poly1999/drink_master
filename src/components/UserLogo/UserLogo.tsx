@@ -1,3 +1,4 @@
+import './UserLogo.css';
 import Image from 'next/image';
 
 interface UserLogoProps {
@@ -11,8 +12,8 @@ function UserLogo({ name, avatarUrl }: UserLogoProps) {
       <Image
         src={avatarUrl ? avatarUrl : '/avatar-placeholder.svg'}
         alt={name}
-        width={32}
-        height={32}
+        width={44}
+        height={44}
         className='user-logo__avatar'
       />
       <span className='user-logo__name'>{name}</span>

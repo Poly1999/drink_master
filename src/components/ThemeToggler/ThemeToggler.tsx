@@ -1,3 +1,5 @@
+import './ThemeToggler.css';
+
 function ThemeToggler() {
   return (
     <button type='button' aria-label='Toggle theme' className='theme-toggler'>

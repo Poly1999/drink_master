@@ -1,3 +1,4 @@
+import './Header.css';
 import Logo from '@/components/Logo/Logo';
 import Navigation from '@/components/Navigation/Navigation';
 import ThemeToggler from '@/components/ThemeToggler/ThemeToggler';

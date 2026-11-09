@@ -1,0 +1,32 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.logo__icon {
+  width: 22px;
+  height: 22px;
+}
+
+.logo__text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.37;
+}
+
+[data-theme='light'] .logo__icon {
+  filter: brightness(0);
+}
+
+@media (min-width: 768px) {
+  .logo__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logo__text {
+    font-size: 18px;
+  }
+}
