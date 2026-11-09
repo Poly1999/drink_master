@@ -2,6 +2,7 @@ import './Footer.css';
 
 import Logo from '@/components/Logo/Logo';
 import SocialLinks from '@/components/SocialLinks/SocialLinks';
+import SubscribeForm from '@/components/SubscribeForm/SubscribeForm';
 import Link from 'next/link';
 
 const navigation = [
@@ -30,7 +31,9 @@ function Footer() {
             ))}
           </ul>
         </nav>
-        <div className='footer__subscribe'></div>
+        <div className='footer__subscribe'>
+          <SubscribeForm />
+        </div>
       </div>
 
       <div className='footer__bottom'>
