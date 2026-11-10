@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import './SubscribeForm.css';
+import toast from 'react-hot-toast';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -17,11 +18,27 @@ function SubscribeForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!isValid(email)) {
       setError('Enter a valid email');
       return;
+    }
+
+    const response = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setEmail('');
+      toast.success('Subscription created!');
+    } else {
+      toast.error(data.message);
     }
   };
 
