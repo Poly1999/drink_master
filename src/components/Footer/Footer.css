@@ -1,0 +1,134 @@
+.footer {
+  --footer-text: #f3f3f3;
+  --footer-muted: rgba(243, 243, 243, 0.4);
+  --footer-border: rgba(243, 243, 243, 0.2);
+
+  padding: 40px max(var(--container-padding), calc((100% - 1240px) / 2)) 24px;
+  border-top: 1px solid var(--footer-border);
+  background-color: #0a0a11;
+  background-image:
+    radial-gradient(
+      ellipse at 35% 100%,
+      rgba(188, 230, 210, 0.18),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 65% 100%,
+      rgba(64, 112, 205, 0.3),
+      transparent 50%
+    );
+  color: var(--footer-text);
+}
+
+[data-theme='light'] .footer .logo__icon {
+  filter: none;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'brand nav'
+    'subscribe subscribe';
+  gap: 40px 20px;
+}
+
+.footer__brand {
+  grid-area: brand;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__nav {
+  grid-area: nav;
+}
+
+.footer__subscribe {
+  grid-area: subscribe;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer__link {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  transition: color var(--transition);
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: var(--footer-muted);
+}
+
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 80px;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--footer-muted);
+}
+
+.footer__legal {
+  display: flex;
+  gap: 14px;
+}
+
+.footer__legal-link {
+  transition: color var(--transition);
+}
+
+.footer__legal-link:hover,
+.footer__legal-link:focus-visible {
+  color: var(--footer-text);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding-top: 80px;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'brand subscribe'
+      'nav subscribe';
+    column-gap: 32px;
+  }
+
+  .footer__link {
+    font-size: 16px;
+    line-height: 1.37;
+  }
+
+  .footer__bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer__top {
+    grid-template-columns: 46% 1fr 309px;
+    grid-template-areas: 'brand nav subscribe';
+    column-gap: 0;
+  }
+
+  .footer__bottom {
+    grid-template-columns: 46% 1fr 309px;
+    column-gap: 0;
+  }
+
+  .footer__legal {
+    grid-column: 3;
+  }
+}
