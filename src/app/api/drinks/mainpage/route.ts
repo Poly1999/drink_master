@@ -1,16 +1,6 @@
 import { pool } from '@/lib/db';
+import { CategoryDrinks } from '@/types/drink';
 import { NextResponse } from 'next/server';
-
-interface Drink {
-  id: number;
-  name: string;
-  image_url: string;
-}
-
-interface CategoryDrinks {
-  category: string;
-  drinks: Drink[];
-}
 
 const categoryName = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other/Unknown'];
 
