@@ -1,18 +1,30 @@
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 40px;
   padding: 60px max(var(--container-padding), calc((100% - 1240px) / 2)) 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 160%;
+  pointer-events: none;
   background-image: radial-gradient(
-    circle at 0% 45%,
+    circle 220px at -40px 14%,
     rgba(64, 112, 205, 0.45),
-    transparent 40%
+    transparent
   );
 }
 
-[data-theme='light'] .hero {
+[data-theme='light'] .hero::before {
   background-image: radial-gradient(
-    circle 360px at 0% 60%,
+    circle 360px at 0% 30%,
     rgba(64, 112, 205, 0.18),
     transparent
   );
@@ -67,10 +79,10 @@
   height: auto;
   -webkit-mask-image: radial-gradient(
     ellipse at center,
-    #000 50%,
-    transparent 72%
+    #000 40%,
+    transparent 70%
   );
-  mask-image: radial-gradient(ellipse at center, #000 50%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 70%);
 }
 
 [data-theme='light'] .hero__image {
@@ -87,6 +99,28 @@
     justify-content: space-between;
     padding-top: 80px;
     padding-bottom: 100px;
+  }
+
+  .hero::before {
+    background-image:
+      radial-gradient(
+        circle 420px at 0% 30%,
+        rgba(64, 112, 205, 0.45),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 30% 20% at 100% 78%,
+        rgba(64, 112, 205, 0.3),
+        transparent
+      );
+  }
+
+  [data-theme='light'] .hero::before {
+    background-image: radial-gradient(
+      circle 360px at 0% 30%,
+      rgba(64, 112, 205, 0.18),
+      transparent
+    );
   }
 
   .hero__title {
@@ -114,6 +148,28 @@
   .hero {
     padding-top: 120px;
     padding-bottom: 160px;
+  }
+
+  .hero::before {
+    background-image:
+      radial-gradient(
+        circle 420px at 0% 30%,
+        rgba(64, 112, 205, 0.45),
+        transparent
+      ),
+      radial-gradient(
+        circle 300px at 100% 72%,
+        rgba(64, 112, 205, 0.3),
+        transparent
+      );
+  }
+
+  [data-theme='light'] .hero::before {
+    background-image: radial-gradient(
+      circle 360px at 0% 30%,
+      rgba(64, 112, 205, 0.18),
+      transparent
+    );
   }
 
   .hero__title {
