@@ -1,0 +1,74 @@
+.drink-recipe {
+  padding: 40px max(var(--container-padding), calc((100% - 1240px) / 2)) 80px;
+}
+
+.drink-recipe__title {
+  margin-bottom: 24px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.14;
+}
+
+.drink-recipe__content {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 40px;
+}
+
+.drink-recipe__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 335 / 396;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.drink-recipe__text {
+  font-size: 14px;
+  line-height: 1.43;
+  white-space: pre-line;
+}
+
+@media (min-width: 768px) {
+  .drink-recipe {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  .drink-recipe__title {
+    margin-bottom: 40px;
+    font-size: 40px;
+  }
+
+  .drink-recipe__img {
+    aspect-ratio: 710 / 433;
+  }
+
+  .drink-recipe__text {
+    font-size: 16px;
+    line-height: 1.37;
+  }
+}
+
+@media (min-width: 1280px) {
+  .drink-recipe {
+    padding-top: 40px;
+    padding-bottom: 120px;
+  }
+
+  .drink-recipe__content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 60px;
+  }
+
+  .drink-recipe__img {
+    flex-shrink: 0;
+    width: 630px;
+    aspect-ratio: 630 / 480;
+  }
+
+  .drink-recipe__text {
+    flex: 1;
+  }
+}

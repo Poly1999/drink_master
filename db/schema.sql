@@ -9,7 +9,6 @@ CREATE TABLE users(
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-
 DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE categories(
   id SERIAL PRIMARY KEY,
@@ -46,7 +45,6 @@ CREATE TABLE drinks(
   owner_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
-
 
 DROP TABLE IF EXISTS drink_ingredients CASCADE;
 CREATE TABLE drink_ingredients(

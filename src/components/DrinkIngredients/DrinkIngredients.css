@@ -1,0 +1,110 @@
+.drink-ingredients {
+  padding: 40px max(var(--container-padding), calc((100% - 1240px) / 2)) 60px;
+}
+
+.drink-ingredients__title {
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.5;
+}
+
+.drink-ingredients__list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.drink-ingredients__list::-webkit-scrollbar {
+  display: none;
+}
+
+.drink-ingredients__item {
+  flex: 0 0 calc((100% - 16px) / 2);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 8px;
+  align-items: start;
+  scroll-snap-align: start;
+}
+
+.drink-ingredients__img {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 12%;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background-color: var(--color-active-bg);
+}
+
+[data-theme='light'] .drink-ingredients__img {
+  background-color: rgba(22, 31, 55, 0.08);
+}
+
+.drink-ingredients__name {
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.drink-ingredients__measure {
+  font-size: 12px;
+  line-height: 1.67;
+  white-space: nowrap;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .drink-ingredients {
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+
+  .drink-ingredients__list {
+    gap: 20px;
+  }
+
+  .drink-ingredients__item {
+    flex-basis: calc((100% - 2 * 20px) / 3);
+  }
+
+  .drink-ingredients__name {
+    font-size: 16px;
+  }
+
+  .drink-ingredients__measure {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .drink-ingredients {
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
+  .drink-ingredients__list {
+    gap: 32px;
+    padding-bottom: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-hover) transparent;
+  }
+
+  .drink-ingredients__list::-webkit-scrollbar {
+    display: block;
+    height: 6px;
+  }
+
+  .drink-ingredients__list::-webkit-scrollbar-thumb {
+    background: var(--color-border-hover);
+    border-radius: 3px;
+  }
+
+  .drink-ingredients__item {
+    flex-basis: calc((100% - 4 * 32px) / 5);
+  }
+}
