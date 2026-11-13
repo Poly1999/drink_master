@@ -1,11 +1,12 @@
 'use client';
 
+import BirthDateField from '@/components/BirthDateField/BirthDateField';
 import Link from 'next/link';
 import { useState } from 'react';
 
 function SignupPage() {
   const [name, setName] = useState('');
-  const [bday, setBday] = useState('');
+  const [bday, setBday] = useState<Date | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,13 +21,7 @@ function SignupPage() {
           value={name}
           onChange={e => setName(e.target.value)}
         />
-        <input
-          placeholder='mm/dd/yyyy'
-          type='text'
-          className='auth-form__input'
-          value={bday}
-          onChange={e => setBday(e.target.value)}
-        />
+        <BirthDateField value={bday} onChange={setBday} />
         <input
           placeholder='Email'
           type='email'
