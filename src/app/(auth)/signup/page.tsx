@@ -21,7 +21,7 @@ function SignupPage() {
           onChange={e => setName(e.target.value)}
         />
         <input
-          placeholder='dd/mm/yyyy'
+          placeholder='mm/dd/yyyy'
           type='text'
           className='auth-form__input'
           value={bday}
