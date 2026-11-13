@@ -18,7 +18,9 @@ function BirthDateField({ value, onChange }: CalendarProps) {
       calendarStartDay={0}
       showMonthDropdown
       showYearDropdown
-      dropdownMode='select'
+      scrollableYearDropdown
+      yearDropdownItemNumber={100}
+      dropdownMode='scroll'
       maxDate={new Date()}
       popperPlacement='right-start'
       className='auth-form__input'
