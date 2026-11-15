@@ -2,18 +2,61 @@
 
 import BirthDateField from '@/components/BirthDateField/BirthDateField';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { SubmitEvent, useState } from 'react';
+import toast from 'react-hot-toast';
+
+interface AuthBody {
+  name: string;
+  birth_date: string;
+  email: string;
+  password: string;
+}
 
 function SignupPage() {
+  const router = useRouter();
+
   const [name, setName] = useState('');
   const [bday, setBday] = useState<Date | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSubmit = async (e: SubmitEvent) => {
+    e.preventDefault();
+
+    if (!bday) {
+      toast.error('Please select your date of birth.');
+      return;
+    }
+
+    const date = `${bday.getFullYear()}-${String(bday.getMonth() + 1).padStart(2, '0')}-${String(bday.getDate()).padStart(2, '0')}`;
+
+    const newUser: AuthBody = { name, birth_date: date, email, password };
+
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Account created!🎉 Please sign in.');
+        router.push('/signin');
+      } else {
+        toast.error(data.message);
+      }
+    } catch {
+      toast.error('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <div className='auth-form'>
       <h1 className='auth-form__title'>Sign Up</h1>
-      <form className='auth-form__fields'>
+      <form className='auth-form__fields' onSubmit={handleSubmit}>
         <input
           placeholder='Name'
           type='text'
