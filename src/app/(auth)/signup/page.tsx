@@ -1,12 +1,26 @@
 'use client';
 
 import BirthDateField from '@/components/BirthDateField/BirthDateField';
+import FormField from '@/components/FormField/FormField';
+import {
+  validateBirthDate,
+  validateEmail,
+  validateName,
+  validatePassword,
+} from '@/lib/validation';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SubmitEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 
 interface AuthBody {
+  name: string;
+  birth_date: string;
+  email: string;
+  password: string;
+}
+
+interface FormErrors {
   name: string;
   birth_date: string;
   email: string;
@@ -20,12 +34,49 @@ function SignupPage() {
   const [bday, setBday] = useState<Date | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<FormErrors>({
+    name: '',
+    birth_date: '',
+    email: '',
+    password: '',
+  });
+
+  const handleNameBlur = () => {
+    setErrors({ ...errors, name: validateName(name) });
+  };
+
+  const handleEmailBlur = () => {
+    setErrors({ ...errors, email: validateEmail(email) });
+  };
+
+  const handlePasswordBlur = () => {
+    setErrors({ ...errors, password: validatePassword(password) });
+  };
+
+  const handleBirthDateChange = (date: Date | null) => {
+    setBday(date);
+    setErrors({ ...errors, birth_date: validateBirthDate(date) });
+  };
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
 
-    if (!bday) {
-      toast.error('Please select your date of birth.');
+    const newErrors: FormErrors = {
+      name: validateName(name),
+      birth_date: validateBirthDate(bday),
+      email: validateEmail(email),
+      password: validatePassword(password),
+    };
+
+    setErrors(newErrors);
+
+    if (
+      newErrors.name ||
+      newErrors.birth_date ||
+      newErrors.email ||
+      newErrors.password ||
+      !bday
+    ) {
       return;
     }
 
@@ -45,6 +96,8 @@ function SignupPage() {
       if (response.ok) {
         toast.success('Account created!🎉 Please sign in.');
         router.push('/signin');
+      } else if (response.status === 409) {
+        setErrors({ ...newErrors, email: data.message });
       } else {
         toast.error(data.message);
       }
@@ -57,28 +110,38 @@ function SignupPage() {
     <div className='auth-form'>
       <h1 className='auth-form__title'>Sign Up</h1>
       <form className='auth-form__fields' onSubmit={handleSubmit}>
-        <input
-          placeholder='Name'
+        <FormField
           type='text'
-          className='auth-form__input'
+          placeholder='Name'
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={setName}
+          onBlur={handleNameBlur}
+          error={errors.name}
         />
-        <BirthDateField value={bday} onChange={setBday} />
-        <input
+
+        <BirthDateField
+          value={bday}
+          onChange={handleBirthDateChange}
+          error={errors.birth_date}
+        />
+
+        <FormField
           placeholder='Email'
           type='email'
-          className='auth-form__input'
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={setEmail}
+          onBlur={handleEmailBlur}
+          error={errors.email}
         />
-        <input
+        <FormField
           placeholder='Password'
           type='password'
-          className='auth-form__input'
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={setPassword}
+          onBlur={handlePasswordBlur}
+          error={errors.password}
         />
+
         <button type='submit' className='auth-form__btn'>
           Sign Up
         </button>
