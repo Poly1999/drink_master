@@ -3,7 +3,9 @@
 import FormField from '@/components/FormField/FormField';
 import { validateEmail, validatePassword } from '@/lib/validation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { SubmitEvent, useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface FormErrors {
   email: string;
@@ -16,6 +18,8 @@ interface AuthBody {
 }
 
 function SigninPage() {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<FormErrors>({ email: '', password: '' });
@@ -52,7 +56,16 @@ function SigninPage() {
       });
 
       const data = await response.json();
-    } catch (error) {}
+
+      if (response.ok) {
+        toast.success('Welcome back!');
+        router.push('/');
+      } else {
+        toast.error(data.message);
+      }
+    } catch {
+      toast.error('Something went wrong. Please try again.');
+    }
   };
 
   return (

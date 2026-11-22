@@ -10,7 +10,7 @@ import {
 } from '@/lib/validation';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { SubmitEvent, useState } from 'react';
+import { SubmitEvent, Suspense, useState } from 'react';
 import toast from 'react-hot-toast';
 
 interface AuthBody {
@@ -118,12 +118,13 @@ function SignupPage() {
           onBlur={handleNameBlur}
           error={errors.name}
         />
-
-        <BirthDateField
-          value={bday}
-          onChange={handleBirthDateChange}
-          error={errors.birth_date}
-        />
+        <Suspense fallback={null}>
+          <BirthDateField
+            value={bday}
+            onChange={handleBirthDateChange}
+            error={errors.birth_date}
+          />
+        </Suspense>
 
         <FormField
           placeholder='Email'
