@@ -23,7 +23,7 @@ export const POST = async (request: Request) => {
 
   try {
     await pool.query(
-      'INSERT INTO users (name,email , password_hash ,birth_date) VALUES ($1, $2 , $3 , $4 )',
+      'INSERT INTO users (name , email , password_hash ,birth_date) VALUES ($1, $2 , $3 , $4 )',
       [name, email, hashedPassword, birth_date],
     );
     return NextResponse.json({ message: 'User created.' }, { status: 201 });
